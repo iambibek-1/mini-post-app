@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Post</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen p-6">
+    <div class="max-w-md">
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div
+          class="bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-5 text-white"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div
+                class="h-11 w-11 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold"
+              >
+                <%= post.user.name.charAt(0).toUpperCase() %>
+              </div>
+
+              <div>
+                <h1 class="text-lg font-bold"><%= post.user.name %></h1>
+                <p class="text-xs text-indigo-100">Edit your post</p>
+              </div>
+            </div>
+
+            <a
+              href="/logout"
+              class="text-sm px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="p-5">
+          <form
+            action="/update/<%= post._id %>"
+            method="POST"
+            class="space-y-4"
+          >
+            <textarea
+              name="content"
+              rows="4"
+              class="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 transition"
+            >
+<%= post.content %></textarea
+            >
+
+            <div class="flex items-center justify-between">
+              <p class="text-xs text-gray-500">Update your post</p>
+
+              <button
+                type="submit"
+                class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-sm font-semibold shadow hover:scale-[1.02] active:scale-[0.98] transition"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
